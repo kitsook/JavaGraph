@@ -48,6 +48,18 @@ public class AdjMatrixGraph implements Graph {
     }
 
     /**
+     * For undirected graph, the adjacency-matrix is symmetric along the diagonal.
+     * This helper function mirror the upper half of the matrix to the lower half along the diagonal.
+     */
+    public static void copyToLowerHalf(int[][] adj) {
+        for (int i = 0; i < adj.length; i++) {
+            for (int j = i+1; j < adj[0].length; j++) {
+                adj[j][i] = adj[i][j];
+            }
+        }
+    }
+
+    /**
      * Retrieves all nodes.
      *
      * @return all nodes in the graph
@@ -69,7 +81,7 @@ public class AdjMatrixGraph implements Graph {
      * @return list of neighbor nodes
      */
     @Override
-    public Collection<? extends Node> getNeighbor(Node node) {
+    public Collection<? extends Node> getNeighbors(Node node) {
         List<Node> result = new ArrayList<>();
         int i = pos.get(node);
         for (int j = 0; j < this.nodeCount; j++) {

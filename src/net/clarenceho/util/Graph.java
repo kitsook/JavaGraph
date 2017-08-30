@@ -43,7 +43,7 @@ public interface Graph {
      * @param node
      * @return list of neighbor nodes
      */
-    Collection<? extends Node> getNeighbor(Node node);
+    Collection<? extends Node> getNeighbors(Node node);
 
     /**
      * Returns cost of the edge from one node to another.

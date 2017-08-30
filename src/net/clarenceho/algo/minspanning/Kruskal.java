@@ -1,9 +1,6 @@
 package net.clarenceho.algo.minspanning;
 
-import net.clarenceho.util.DisjointSet;
-import net.clarenceho.util.Edge;
-import net.clarenceho.util.Node;
-import net.clarenceho.util.Pair;
+import net.clarenceho.util.*;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -13,21 +10,22 @@ import java.util.Set;
 /**
  * Kruskal's algorithm to solve minimum spanning problems
  */
-public class Kruskal {
-    private MinSpanningProblem problem;
+public class Kruskal implements MinSpanningSolver {
+    private GraphProblem problem;
 
-    public Kruskal(MinSpanningProblem problem) {
+    public Kruskal(GraphProblem problem) {
         this.problem = problem;
     }
 
-    public Collection<? extends Edge> resolve() {
+    @Override
+    public Collection<? extends Edge> resolve() { // TODO: problem handing 0 cost edges
         Set<Edge> result = new HashSet<>();
         DisjointSet<Node> disjointSet = new DisjointSet<>();
 
-        for (Node n : problem.getNodes()) {
+        for (Node n : getNodes()) {
             disjointSet.makeSet(n);
         }
-        List<? extends Edge> sortedEdge = problem.getSortedEdges();
+        List<? extends Edge> sortedEdge = getSortedEdges();
 
         for (Edge e : sortedEdge) {
             Pair<? extends Node> nodePair = e.getNodePair();
@@ -41,4 +39,13 @@ public class Kruskal {
 
         return result;
     }
+
+    private Collection<? extends Node> getNodes() {
+        return this.problem.getGraph().getNodes();
+    }
+
+    private List<? extends Edge> getSortedEdges() {
+        return this.problem.getGraph().getSortedEdges(true);
+    }
+
 }

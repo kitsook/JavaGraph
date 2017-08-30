@@ -124,7 +124,7 @@ public class MinCostSqMatrix implements ShortestPathProblem {
 
     @Override
     public Collection<? extends Node> getNeighbor(Node n) {
-        return this.graph.getNeighbor(n);
+        return this.graph.getNeighbors(n);
     }
 
     /**
