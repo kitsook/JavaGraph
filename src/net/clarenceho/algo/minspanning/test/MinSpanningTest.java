@@ -255,8 +255,8 @@ public class MinSpanningTest {
 
     @Test
     public void compareSolvers01() {
-        int count = 10;
-        int maxSize = 5;
+        int count = 100;
+        int maxSize = 10;
         int maxCost = 20;
 
         for (int c = 0; c < count; c++) {

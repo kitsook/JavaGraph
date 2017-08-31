@@ -18,7 +18,7 @@ public class Kruskal implements MinSpanningSolver {
     }
 
     @Override
-    public Collection<? extends Edge> resolve() { // TODO: problem handing 0 cost edges
+    public Collection<? extends Edge> resolve() {
         Set<Edge> result = new HashSet<>();
         DisjointSet<Node> disjointSet = new DisjointSet<>();
 
@@ -26,7 +26,6 @@ public class Kruskal implements MinSpanningSolver {
             disjointSet.makeSet(n);
         }
         List<? extends Edge> sortedEdge = getSortedEdges();
-
         for (Edge e : sortedEdge) {
             Pair<? extends Node> nodePair = e.getNodePair();
             Node u = nodePair.left();

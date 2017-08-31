@@ -40,7 +40,7 @@ public class AdjMatrixGraph implements Graph {
         edges = new ArrayList<>();
         for (int i = 0; i < adj.length; i++) {
             for (int j = this.directed? 0 : i; j < adj[0].length; j++) {
-                if (adj[i][j] > 0) {
+                if (adj[i][j] >= 0) {
                     edges.add(new Edge(nodes.get(i), nodes.get(j), adj[i][j]));
                 }
             }
