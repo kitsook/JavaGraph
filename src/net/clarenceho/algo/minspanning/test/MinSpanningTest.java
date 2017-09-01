@@ -36,7 +36,7 @@ public class MinSpanningTest {
         int adj[][] = new int[size][size];
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                adj[i][j] = -1;
+                adj[i][j] = AdjMatrixGraph.NO_PATH;
             }
         }
         adj[0][1] = 4;
@@ -75,7 +75,7 @@ public class MinSpanningTest {
         int adj[][] = new int[size][size];
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                adj[i][j] = -1;
+                adj[i][j] = AdjMatrixGraph.NO_PATH;
             }
         }
         adj[0][1] = 4;
@@ -118,7 +118,7 @@ public class MinSpanningTest {
         int adj[][] = new int[4][4];
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
-                adj[i][j] = -1;
+                adj[i][j] = AdjMatrixGraph.NO_PATH;
             }
         }
         adj[0][1] = 5;
@@ -148,7 +148,7 @@ public class MinSpanningTest {
         int adj[][] = new int[4][4];
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
-                adj[i][j] = -1;
+                adj[i][j] = AdjMatrixGraph.NO_PATH;
             }
         }
         adj[0][1] = 5;
@@ -173,7 +173,7 @@ public class MinSpanningTest {
 
         // prepare edges
         int adj[][] = new int[1][1];
-        adj[0][0] = -1;
+        adj[0][0] = AdjMatrixGraph.NO_PATH;
         AdjMatrixGraph.copyToLowerHalf(adj);
 
         GraphProblem problem = new MinSpanningTestCase(nodes, adj);
@@ -192,7 +192,7 @@ public class MinSpanningTest {
 
         // prepare edges
         int adj[][] = new int[1][1];
-        adj[0][0] = -1;
+        adj[0][0] = AdjMatrixGraph.NO_PATH;
         AdjMatrixGraph.copyToLowerHalf(adj);
 
         GraphProblem problem = new MinSpanningTestCase(nodes, adj);
@@ -214,7 +214,7 @@ public class MinSpanningTest {
         int adj[][] = new int[2][2];
         for (int i = 0; i < 2; i++) {
             for (int j = 0; j < 2; j++) {
-                adj[i][j] = -1;
+                adj[i][j] = AdjMatrixGraph.NO_PATH;
             }
         }
         adj[0][1] = 3;
@@ -239,7 +239,7 @@ public class MinSpanningTest {
         int adj[][] = new int[2][2];
         for (int i = 0; i < 2; i++) {
             for (int j = 0; j < 2; j++) {
-                adj[i][j] = -1;
+                adj[i][j] = AdjMatrixGraph.NO_PATH;
             }
         }
         adj[0][1] = 3;
@@ -257,7 +257,8 @@ public class MinSpanningTest {
     public void compareSolvers01() {
         int count = 1000;
         int maxSize = 20;
-        int maxCost = 20;
+        int minCost = AdjMatrixGraph.MIN_COST/maxSize;
+        int maxCost = AdjMatrixGraph.MAX_COST/maxSize;
 
         for (int c = 0; c < count; c++) {
             int size = ThreadLocalRandom.current().nextInt(1, maxSize + 1);
@@ -271,9 +272,9 @@ public class MinSpanningTest {
             for (int i = 0; i < size; i++) {
                 for (int j = i; j < size; j++) {
                     if (i == j) {
-                        adj[i][j] = -1;
+                        adj[i][j] = AdjMatrixGraph.NO_PATH;
                     } else {
-                        adj[i][j] = ThreadLocalRandom.current().nextInt(0, maxCost + 1);
+                        adj[i][j] = ThreadLocalRandom.current().nextInt(minCost, maxCost+1);
                     }
                 }
             }

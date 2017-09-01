@@ -60,7 +60,7 @@ public class MinCostSqMatrix implements ShortestPathProblem {
         int[][] result = new int[costs.length * costs.length][costs.length * costs.length];
         for (int i = 0; i < costs.length * costs.length; i++) {
             for (int j = 0; j < costs.length * costs.length; j++) {
-                result[i][j] = -1;
+                result[i][j] = AdjMatrixGraph.NO_PATH;
             }
         }
 
