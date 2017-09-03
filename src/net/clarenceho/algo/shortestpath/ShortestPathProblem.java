@@ -3,8 +3,6 @@ package net.clarenceho.algo.shortestpath;
 import net.clarenceho.util.GraphProblem;
 import net.clarenceho.util.Node;
 
-import java.util.Collection;
-
 /**
  * Define a shortest path problem.
  */

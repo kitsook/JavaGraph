@@ -21,7 +21,7 @@ public class Dijkstra {
 
     /**
      * Solve the shortest path problem
-     * 
+     *
      * @return cost of the shortest path
      * @throws IllegalArgumentException if encountered path with negative cost
      */

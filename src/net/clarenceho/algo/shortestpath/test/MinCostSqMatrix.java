@@ -6,7 +6,6 @@ import net.clarenceho.util.Graph;
 import net.clarenceho.util.Node;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 /**
