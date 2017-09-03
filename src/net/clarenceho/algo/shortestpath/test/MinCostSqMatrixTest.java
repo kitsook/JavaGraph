@@ -11,6 +11,18 @@ import static org.junit.Assert.*;
 
 public class MinCostSqMatrixTest {
 
+    @Test(expected = IllegalArgumentException.class)
+    public void testNegativeCost() {
+        int[][] adj = new int[2][2];
+        adj[0][0] = 10;
+        adj[0][1] = -1;
+        adj[1][0] = 20;
+        adj[1][1] = 5;
+        ShortestPathProblem problem = new MinCostSqMatrix(adj);
+        Dijkstra solver = new Dijkstra(problem);
+        assertEquals(14, solver.resolve());  // expected to throw exception
+    }
+
     @Test
     public void testGivenExamples() {
         List<TestCase> cases = new ArrayList<>();

@@ -18,13 +18,20 @@ public class Dijkstra {
         this.problem = problem;
     }
 
-    public int resolve() {
+
+    /**
+     * Solve the shortest path problem
+     * 
+     * @return cost of the shortest path
+     * @throws IllegalArgumentException if encountered path with negative cost
+     */
+    public int resolve() throws IllegalArgumentException {
         Map<Node, Integer> tentativeDist = new HashMap<>();
         Node currentNode = problem.getStartNode();
         Set<Node> visited = new HashSet<>();
 
         // Assign to every node a tentative distance value.
-        for (Node n : problem.getNodes()) {
+        for (Node n : problem.getGraph().getNodes()) {
             if (n.equals(problem.getStartNode())) {
                 tentativeDist.put(n, problem.initCost()); // initial cost of starting node
             } else {
@@ -33,8 +40,12 @@ public class Dijkstra {
         }
 
         while (!visited.contains(problem.getEndNode())) {
-            for (Node neighbor : problem.getNeighbor(currentNode)) {
-                int newDist = tentativeDist.get(currentNode) + problem.cost(currentNode, neighbor);
+            for (Node neighbor : problem.getGraph().getNeighbors(currentNode)) {
+                int costToNeighbor = problem.getGraph().cost(currentNode, neighbor);
+                if (costToNeighbor < 0) {
+                    throw new IllegalArgumentException("Negative cost from " + currentNode + " to " + neighbor);
+                }
+                int newDist = tentativeDist.get(currentNode) + costToNeighbor;
                 if (newDist < tentativeDist.get(neighbor)) {
                     tentativeDist.put(neighbor, newDist);
                 }

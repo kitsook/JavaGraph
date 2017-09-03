@@ -1,5 +1,6 @@
 package net.clarenceho.algo.shortestpath;
 
+import net.clarenceho.util.GraphProblem;
 import net.clarenceho.util.Node;
 
 import java.util.Collection;
@@ -7,7 +8,7 @@ import java.util.Collection;
 /**
  * Define a shortest path problem.
  */
-public interface ShortestPathProblem {
+public interface ShortestPathProblem extends GraphProblem {
     /**
      * Returns the starting node of the problem.
      *
@@ -23,33 +24,10 @@ public interface ShortestPathProblem {
     Node getEndNode();
 
     /**
-     * Returns all the nodes of the problem.
-     *
-     * @return collection of nodes
-     */
-    Collection<? extends Node> getNodes();
-
-    /**
      * Returns initial cost at the starting node.
      *
      * @return initial cost
      */
     int initCost();
 
-    /**
-     * Returns costs of the edge from one node to another.
-     *
-     * @param from
-     * @param to
-     * @return
-     */
-    int cost(Node from, Node to);
-
-    /**
-     * Returns neighbor nodes.
-     *
-     * @param n
-     * @return
-     */
-    Collection<? extends Node> getNeighbor(Node n);
 }
